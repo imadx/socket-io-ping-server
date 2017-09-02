@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Socket Ping Stats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <code id="stats"></code> -->
+		<div class="main-wrapper">
+			<h1 class="heading">
+			Energy Management System <br>
+			<small>Live Monitor</small>
+			</h1>
+
+			<div class="static-main">
+				<img src="/img/main.png" alt="">
+			</div>
+			<div class="stat-wrapper">
+				<div class="stat" v-show="stats.utility_status">
+					<span>Utility</span>
+					<img src="/img/stat_1.png" alt="">
+					<span>{{stats.utility_status}}</span>
+					<span class="bold">{{stats.utility_value}}</span>
+				</div>
+				<div class="stat" v-show="stats.solar_status">
+					<span>Solar</span>
+					<img src="/img/stat_2.png" alt="">
+					<span>{{stats.solar_status}}</span>
+					<span class="bold">{{stats.solar_value}}</span>
+				</div>
+				<div class="stat" v-show="stats.storage_status">
+					<span>Storage</span>
+					<img src="/img/stat_3.png" alt="">
+					<span>{{stats.storage_status}}</span>
+					<span class="bold">{{stats.storage_value}}</span>
+				</div>
+				<div class="stat" v-show="stats.home_status">
+					<span>Home</span>
+					<img src="/img/stat_4.png" alt="">
+					<span>{{stats.home_status}}</span>
+					<span class="bold">{{stats.home_value}}</span>
+				</div>
+			</div>
+			<div class="stat-wrapper">
+				<div class="stat small" v-show="stats.stat_predicted_demand_value">
+					<span class="bold">{{stats.stat_predicted_demand_value}}</span>
+					<small>Predicted Demand</small>
+				</div>
+				<div class="stat small" v-show="stats.stat_net_metering_value">
+					<span class="bold">{{stats.stat_net_metering_value}}</span>
+					<small>Net Metering</small>
+				</div>
+			</div>
+			<div class="stat-wrapper">
+				<div class="stat small" v-show="stats.stat_cost_tariff_value">
+					<span class="bold">{{stats.stat_cost_tariff_value}}</span>
+					<small>Cost Tariff</small>
+				</div>
+				<div class="stat small" v-show="stats.stat_cost_ems_value">
+					<span class="bold">{{stats.stat_cost_ems_value}}</span>
+					<small>Cost EMS</small>
+				</div>
+			</div>
+			<div class="spacer"></div>
+			<div class="status">{{status}}</div>
+		</div>
+	</div>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/main.js"></script>
+</body>
+</html>
